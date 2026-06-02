@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meus Links de Afiliado</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #f5f3ef;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem 4rem;
+      color: #1a1a1a;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 460px;
+    }
+
+    /* HEADER */
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .avatar {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f9a825, #ef6c00);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.85rem;
+      font-size: 30px;
+      box-shadow: 0 4px 16px rgba(239,108,0,0.25);
+    }
+
+    .name {
+      font-family: 'Playfair Display', serif;
+      font-size: 23px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .bio {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .store-badges {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 14px;
+      border-radius: 20px;
+      border: 1px solid #ddd;
+      color: #555;
+      background: #fff;
+    }
+
+    /* TABS */
+    .tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .tab {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 7px 18px;
+      border-radius: 20px;
+      border: 1px solid #ddd;
+      background: transparent;
+      color: #888;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .tab.active {
+      background: #1a1a1a;
+      color: #fff;
+      border-color: #1a1a1a;
+    }
+
+    .tab:hover:not(.active) {
+      border-color: #aaa;
+      color: #333;
+    }
+
+    /* SECTIONS */
+    .section { display: none; }
+    .section.visible { display: block; }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-bottom: 0.75rem;
+    }
+
+    /* LINKS */
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 14px;
+      margin-bottom: 10px;
+      text-decoration: none;
+      color: #1a1a1a;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .link-card:hover {
+      border-color: #ccc;
+      background: #fafafa;
+    }
+
+    .link-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .icon-ml { background: #FFF200; }
+    .icon-sp { background: #EE4D2D; color: #fff; }
+    .icon-az { background: #FF9900; }
+
+    .link-info { flex: 1; min-width: 0; }
+
+    .link-name {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .link-sub {
+      font-size: 12px;
+      color: #999;
+    }
+
+    .link-arrow {
+      color: #ccc;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 12px;
+      color: #bbb;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER — edite seu nome e bio aqui -->
+  <div class="header">
+    <div class="avatar">🛍️</div>
+    <p class="name">Seu Nome Aqui</p>
+    <p class="bio">As melhores ofertas selecionadas pra você ✨</p>
+    <div class="store-badges">
+      <span class="badge">Mercado Livre</span>
+      <span class="badge">Shopee</span>
+      <span class="badge">Amazon</span>
+    </div>
+  </div>
+
+  <!-- ABAS DAS CATEGORIAS -->
+  <div class="tabs">
+    <button class="tab active" onclick="showCat('moveis', this)">🪑 Móveis</button>
+    <button class="tab" onclick="showCat('eletro', this)">🔌 Eletrodomésticos</button>
+    <button class="tab" onclick="showCat('talheres', this)">🍴 Talheres</button>
+    <!-- Para adicionar nova aba, copie a linha abaixo e altere o id e nome -->
+    <!-- <button class="tab" onclick="showCat('nova', this)">📦 Nova Categoria</button> -->
+  </div>
+
+  <!-- ===================== CATEGORIA: MÓVEIS ===================== -->
+  <div id="moveis" class="section visible">
+    <p class="section-title">Móveis</p>
+
+    <!-- Para editar: troque o href pelo seu link de afiliado real -->
+    <a class="link-card" href="SEU_LINK_AQUI" target="_blank" rel="nofollow sponsored">
+      <div class="link-icon icon-ml">🟡</div>
+      <div class="link-info">
+        <p class="link-name">Estante de madeira rústica</p>
+        <p class="link-sub">Mercado Livre • R$ 189</p>
+      </div>
+      <span class="link-arrow">›</span>
+    </a>
+
+    <a class="link-card" href="SEU_LINK_AQUI" target="_blank" rel="nofollow sponsored">
+      <div class="link-icon icon-sp">🔴</div>
+      <div class="link-info">
+        <p class="link-name">Mesa de escritório dobrável</p>
+        <p class="link-sub">Shopee • R$ 249</p>
+      </div>
+      <span class="link-arrow">›</span>
+    </a>
+
+    <a class="link-card" href="SEU_LINK_AQUI" target="_blank" rel="nofollow sponsored">
+      <div class="link-icon icon-az">🟠</div>
+      <div class="link-info">
+        <p class="link-name">Cadeira gamer ergonômica</p>
+        <p class="link-sub">Amazon • R$ 599</p>
+      </div>
+      <span class="link-arrow">›</span>
+    </a>
+  </div>
+
+  <!-- ===================== CATEGORIA: ELETRODOMÉSTICOS ===================== -->
+  <div id="eletro" class="section">
+    <p class="section-title">Eletrodomésticos</p>
+
+    <a class="link-card" href="SEU_LINK_AQUI" target="_blank" rel="nofollow sponsored">
+      <div class="link-icon icon-az">🟠</div>
+      <div class="link-info">
+        <p class="link-name">Air fryer 5L digital</p>
+        <p class="link-sub">Amazon • R$ 299</p>
+      </div>
+      <span class="link-arrow">›</span>
+    </a>
+
+    <a class="link-card" href="SEU_LINK_AQUI" target="_blank" rel="nofollow sponsored">
+      <div class="link-icon icon-ml">🟡</div>
+      <div class="link-info">
+        <p class="link-name">Liquidificador 1200W</p>
+        <p class="link-sub">Mercado Livre • R$ 149</p>
+      </div>
+      <span class="link-arrow">›</span>
+    </a>
+
+    <a class="link-card" href="SEU_LINK_AQUI" target="_blank" rel="nofollow sponsored">
+      <div class="link-icon icon-sp">🔴</div>
+      <div class="link-info">
+        <p class="link-name">Cafeteira expresso automática</p>
+        <p class="link-sub">Shopee • R$ 389</p>
+      </div>
+      <span class="link-arrow">›</span>
+    </a>
+  </div>
+
+  <!-- ===================== CATEGORIA: TALHERES ===================== -->
+  <div id="talheres" class="section">
+    <p class="section-title">Talheres & Cozinha</p>
+
+    <a class="link-card" href="SEU_LINK_AQUI" target="_blank" rel="nofollow sponsored">
+      <div class="link-icon icon-az">🟠</div>
+      <div class="link-info">
+        <p class="link-name">Jogo de talheres 24 peças inox</p>
+        <p class="link-sub">Amazon • R$ 89</p>
+      </div>
+      <span class="link-arrow">›</span>
+    </a>
+
+    <a class="link-card" href="SEU_LINK_AQUI" target="_blank" rel="nofollow sponsored">
+      <div class="link-icon icon-ml">🟡</div>
+      <div class="link-info">
+        <p class="link-name">Faqueiro com 42 peças dourado</p>
+        <p class="link-sub">Mercado Livre • R$ 129</p>
+      </div>
+      <span class="link-arrow">›</span>
+    </a>
+
+    <a class="link-card" href="SEU_LINK_AQUI" target="_blank" rel="nofollow sponsored">
+      <div class="link-icon icon-sp">🔴</div>
+      <div class="link-info">
+        <p class="link-name">Kit facas de cozinha profissional</p>
+        <p class="link-sub">Shopee • R$ 79</p>
+      </div>
+      <span class="link-arrow">›</span>
+    </a>
+  </div>
+
+  <!-- ===================== NOVA CATEGORIA (EXEMPLO) ===================== -->
+  <!-- Para ativar: remova os comentários abaixo e adicione a aba correspondente acima -->
+  <!--
+  <div id="nova" class="section">
+    <p class="section-title">Nova Categoria</p>
+
+    <a class="link-card" href="SEU_LINK_AQUI" target="_blank" rel="nofollow sponsored">
+      <div class="link-icon icon-ml">🟡</div>
+      <div class="link-info">
+        <p class="link-name">Nome do produto</p>
+        <p class="link-sub">Loja • R$ 00</p>
+      </div>
+      <span class="link-arrow">›</span>
+    </a>
+  </div>
+  -->
+
+  <div class="footer">Feito com carinho para o seu Instagram 🧡</div>
+
+</div>
+
+<script>
+  function showCat(id, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('visible');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
